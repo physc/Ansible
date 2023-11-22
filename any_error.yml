@@ -1,0 +1,17 @@
+---
+- hosts: Ubuntu
+  tasks:
+    - name: index.html copy with ignore_error
+      template: src=index.html dest=/home/ubuntu
+      register: copy_result
+      ignore_errors: true
+
+    - name: String Variable from - main_playbook_variable
+      debug:
+        var: copy_result
+
+    - name: index.html copy with failed_when
+      template: src=index.html dest=/home/ubuntu
+      failed_when:
+        - '"Could not find or access" not in copy_result.msg'
+        - copy_result.failed == true

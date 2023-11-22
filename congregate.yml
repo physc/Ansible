@@ -1,0 +1,6 @@
+## Executing multiple playbooks from one Playbook
+
+---
+
+- import_playbook: ping.yml
+- import_playbook: whoami.yml

@@ -1,0 +1,16 @@
+### Using variable
+
+---
+
+- hosts: Ubuntu
+  vars:
+  - password : "Hello World"
+  vars_files:
+  - ../vars/pass.yaml
+
+  tasks: 
+  - name: Print Variable
+    shell: echo "{{ password }}"
+    register: b
+  - debug:  
+     msg: "{{ b.stdout_lines }}"

@@ -1,0 +1,16 @@
+### condition
+
+---
+
+- hosts: Ubuntu
+  gather_facts: false
+  tasks: 
+   - name: Using Print Hello World using condition
+     shell: ps.s
+     register: fail
+     ignore_errors: true
+  
+   - name: Print if Failed
+     debug: 
+      msg: "{{ fail.stdout_lines}}"
+     when: fail.failed == true

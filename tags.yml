@@ -1,0 +1,20 @@
+### Working with Tags 
+
+---
+
+- hosts: Ubuntu
+  tasks: 
+   - name: Copy file to target
+     copy:
+      src: ./foo.conf
+      dest: /etc/cpoo.conf
+      chmod: 400
+     tags: Copy_Ubuntu
+
+- hosts: Win
+  tasks: 
+   - name: Copy file to target
+     copy:
+      src: ./foo.conf
+      dest: C:\cfoo.conf
+     tags: Copy_Win

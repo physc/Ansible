@@ -1,0 +1,17 @@
+## Handling Error 
+
+---
+
+- hosts: Ubuntu
+  tasks:
+   - name: Handling Error
+     shell: /bin/false
+     no_log: false
+  ignore_errors: true
+
+- hosts: Win
+  tasks:
+   - name: Handling Error in Windows
+     win_command: cd D:\test
+     no_log: false
+  ignore_errors: true

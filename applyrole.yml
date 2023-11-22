@@ -1,0 +1,7 @@
+### Applying role
+
+--- 
+
+- hosts: Ubuntu
+  roles: 
+  - ./roles/testroles

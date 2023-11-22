@@ -1,0 +1,19 @@
+# Install nginx on Ubuntu and IIS on Windows
+
+---
+- hosts: Ubuntu
+  become: yes
+  tasks: 
+  - name: Installing Nginx
+    apt: 
+     name: nginx
+     state: latest
+    ignore_errors: yes
+
+- hosts: Win
+  tasks:
+  - name: Installing IIS Web Server
+    win_feature:
+     name: Web-Server
+     state: present
+    ignore_errors: yes

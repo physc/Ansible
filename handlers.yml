@@ -1,0 +1,32 @@
+### Handlers in Ubuntu and Windows
+
+---
+
+- hosts: Ubuntu
+  tasks: 
+  - name: Restart Nginx
+    service: 
+      name: nginx
+      state: stopped
+    notify: restart nginx
+
+  handlers:
+  - name: restart nginx
+    service: 
+     name: nginx
+     state: restarted
+
+
+- hosts: Win
+  tasks:
+   - name: Restart Time Service
+     win_service: 
+       name: W32Time
+       state: stopped
+     notify: restart_Time
+
+  handlers:
+  - name: restart_Time
+    win_service:
+     name: W32Time
+     state: restarted

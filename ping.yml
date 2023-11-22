@@ -1,0 +1,11 @@
+# ping.yaml
+---
+- hosts: Ubuntu
+  tasks:
+    - name: Ping Ubuntu
+      action: ping
+
+- hosts: Win
+  tasks:
+    - name: Ping Windows
+      action: win_ping

@@ -1,0 +1,18 @@
+# update OS
+
+---
+- hosts: Ubuntu
+  become: yes
+  tasks:
+  - name: Upgrade all packages to the latest version
+    apt:
+      name: "*"
+      state: latest
+
+- hosts: Win
+  #become: yes
+  tasks:
+   - name: Install only security updates
+     win_updates:
+      category_names: SecurityUpdates
+    

@@ -1,0 +1,17 @@
+# whoami
+---
+- hosts: Ubuntu
+  tasks:
+  - name: whoami
+    shell: whoami
+    register: Ubuntu_whoami_out
+  - debug:
+     msg: "{{Ubuntu_whoami_out.stdout_lines}}"
+
+- hosts: Win
+  tasks:
+  - name: whoami
+    win_command: hostname
+    register: whoami_out
+  - debug:
+     msg: "{{whoami_out.stdout_lines}}"

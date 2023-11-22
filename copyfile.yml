@@ -1,0 +1,23 @@
+# Copy files from Host to target
+
+--- 
+
+- hosts: Ubuntu
+  become: yes
+  tasks:
+   - name: example copying file with owner and permissions
+     copy:
+      src: ./foo.conf
+      dest: /etc/foo.conf
+      mode: 0644
+      state: present
+
+- hosts: Win
+  tasks:
+   - name: example copying file with owner and permissions
+     copy: 
+      src: ./foo.conf
+      dest: C:\temp\foo.conf
+      state: present
+
+

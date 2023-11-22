@@ -1,0 +1,22 @@
+## create File  
+---
+
+- hosts: Ubuntu
+  tasks:
+   - name: Create file named test.yaml
+     shell: touch test.yaml
+     register: file
+   - debug:
+      var: file.stdout_lines
+
+- hosts: Win
+  tasks:
+   - name: Run multi-lined shell commands
+     ansible.windows.win_shell: |
+       $value = Test-Path -Path C:\temp
+       if ($value) {
+        Remove-Item -Path C:\temp -Force
+       }
+       New-Item -Path C:\temp -ItemType Directory
+     args:
+      stdin: Input message
